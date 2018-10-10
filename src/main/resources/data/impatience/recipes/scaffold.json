@@ -1,0 +1,20 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "sss",
+    "p p",
+    "sss"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:wood"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "impatience:scaffold",
+    "count": 3
+  }
+}
