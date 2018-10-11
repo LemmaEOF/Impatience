@@ -7,6 +7,7 @@ import net.minecraft.block.ILiquidContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.init.Blocks;
@@ -179,5 +180,20 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
             entity.motionY = -0.20;
         }
         entity.fallDistance = 0.0f;
+    }
+
+    @Override
+    public void onBlockClicked(IBlockState state, World world, BlockPos pos, EntityPlayer player) {
+        if (player.getHeldItemMainhand().getItem().equals(Impatience.SCAFFOLD.asItem())) {
+            BlockPos placePos = pos;
+            for (int i = 0; i < 32; i++) {
+                placePos = placePos.offset(EnumFacing.UP);
+                if (world.getBlockState(placePos).isAir()) {
+                    world.setBlockState(placePos, this.getDefaultState());
+                    if (!player.isCreative()) player.getHeldItemMainhand().shrink(1);
+                    break;
+                } else if (world.getBlockState(placePos).getBlock() != Impatience.SCAFFOLD) break;
+            }
+        }
     }
 }

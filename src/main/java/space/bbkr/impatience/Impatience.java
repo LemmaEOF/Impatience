@@ -12,7 +12,7 @@ import org.dimdev.rift.listener.ItemAdder;
 
 public class Impatience implements BlockAdder, ItemAdder {
 
-    public static final BlockScaffold SCAFFOLD = new BlockScaffold(Block.Builder.create(Material.WOOD, MapColor.WOOD).hardnessAndResistance(2f, 3f).sound(SoundType.WOOD));
+    public static final BlockScaffold SCAFFOLD = new BlockScaffold(Block.Builder.create(Material.WOOD, MapColor.WOOD).hardnessAndResistance(2f, 2f).sound(SoundType.WOOD));
 
     @Override
     public void registerBlocks() {
