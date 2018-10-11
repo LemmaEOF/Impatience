@@ -188,6 +188,7 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
             BlockPos placePos = pos;
             for (int i = 0; i < 32; i++) {
                 placePos = placePos.offset(EnumFacing.UP);
+                if (World.isOutsideBuildHeight(placePos)) break;
                 if (world.getBlockState(placePos).isAir()) {
                     world.setBlockState(placePos, this.getDefaultState());
                     if (!player.isCreative()) player.getHeldItemMainhand().shrink(1);
