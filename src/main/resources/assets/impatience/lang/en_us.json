@@ -1,3 +1,18 @@
 {
-  "block.impatience.scaffold": "Scaffold"
+  "block.impatience.scaffolding": "Scaffolding",
+  "block.impatience.andesite_stairs": "Andesite stairs",
+  "block.impatience.diorite_stairs": "Diorite stairs",
+  "block.impatience.granite_stairs": "Granite stairs",
+  "block.impatience.end_stone_brick_stairs": "End stone brick stairs",
+  "block.impatience.mossy_cobblestone_stairs": "Mossy cobblestone stairs",
+  "block.impatience.mossy_stone_brick_stairs": "Mossy stone brick stairs",
+  "block.impatience.polished_andesite_stairs": "Polished andesite stairs",
+  "block.impatience.polished_diorite_stairs": "Polished diorite stairs",
+  "block.impatience.polished_granite_stairs": "Polished granite stairs",
+  "block.impatience.red_nether_brick_stairs": "Red nether brick stairs",
+  "block.impatience.smooth_sandstone_stairs": "Smooth sandstone stairs",
+  "block.impatience.smooth_red_sandstone_stairs": "Smooth red sandstone stairs",
+  "block.impatience.smooth_stone_stairs": "Smooth stone stairs",
+  "block.impatience.smooth_quartz_stairs": "Smooth quartz stairs",
+  "block.impatience.stone_stairs": "Stone stairs"
 }
