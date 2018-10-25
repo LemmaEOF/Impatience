@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "hovering=false": { "model": "impatience:block/scaffolding" },
+        "hovering=true": { "model": "impatience:block/scaffolding_crossbar" }
+    }
+}

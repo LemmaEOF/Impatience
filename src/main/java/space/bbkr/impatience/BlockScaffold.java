@@ -10,7 +10,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.IFluidState;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Fluids;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
@@ -25,17 +24,16 @@ import net.minecraft.world.IWorldReaderBase;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Iterator;
 import java.util.Random;
 
 public class BlockScaffold extends Block implements IBucketPickupHandler, ILiquidContainer {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty HOVERING = BooleanProperty.create("hovering");
 
     public BlockScaffold(Builder builder) {
         super(builder);
-        this.setDefaultState(this.stateContainer.getBaseState().withProperty(WATERLOGGED, false));
-
+        this.setDefaultState(this.stateContainer.getBaseState().withProperty(WATERLOGGED, false).withProperty(HOVERING, false));
     }
 
     @Override
@@ -73,7 +71,7 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
             }
         }
 
-        return super.updatePostPlacement(state, facing, newState, world, pos, posFrom);
+        return super.updatePostPlacement(state.withProperty(HOVERING, isHovering(world.getBlockState(pos.down()))), facing, newState, world, pos, posFrom);
     }
 
     @Nullable
@@ -81,13 +79,15 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
         IBlockState state = this.getDefaultState();
         IFluidState fluid = ctx.getWorld().getFluidState(ctx.getPos());
 
+        state = state.withProperty(HOVERING, isHovering(ctx.getWorld().getBlockState(ctx.getPos().down())));
+
         for(EnumFacing facing: EnumFacing.values()) {
             if (facing.getAxis().isHorizontal()) {
                 return state.withProperty(WATERLOGGED, fluid.getFluid() == Fluids.WATER);
             }
         }
 
-        return null;
+        return state;
     }
 
     public void tick(IBlockState state, World world, BlockPos pos, Random rand) {
@@ -113,7 +113,7 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
         BlockPos doubleCheckPos;
         IBlockState checkBlock = world.getBlockState(checkPos);
         IBlockState doubleCheckBlock;
-        if (checkBlock.isSolid() || checkBlock.getBlock() == Impatience.SCAFFOLD) return true;
+        if (checkBlock.isSolid() || checkBlock.getBlock() == Impatience.SCAFFOLDING) return true;
         for (EnumFacing facing: EnumFacing.values()) {
             if (facing.getAxis().isHorizontal()) {
                 checkPos = pos.offset(EnumFacing.DOWN);
@@ -128,7 +128,7 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
                         BlockPos tempPos = doubleCheckPos.offset(EnumFacing.UP);
                         doubleCheckBlock = world.getBlockState(tempPos);
                     }
-                    if (checkBlock.getBlock() == Impatience.SCAFFOLD && (i == 0 || doubleCheckBlock.getBlock() == Impatience.SCAFFOLD)) return true;
+                    if (checkBlock.getBlock() == Impatience.SCAFFOLDING && (i == 0 || doubleCheckBlock.getBlock() == Impatience.SCAFFOLDING)) return true;
                 }
             }
         }
@@ -137,6 +137,7 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
 
     protected void fillStateContainer(net.minecraft.state.StateContainer.Builder<Block, IBlockState> builder) {
         builder.add(WATERLOGGED);
+        builder.add(HOVERING);
     }
 
     public Fluid pickupFluid(IWorld world, BlockPos pos, IBlockState state) {
@@ -179,12 +180,12 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
         } else if (entity.motionY<-0.20) {
             entity.motionY = -0.20;
         }
-        entity.fallDistance = 0.0f;
+
     }
 
     @Override
     public void onBlockClicked(IBlockState state, World world, BlockPos pos, EntityPlayer player) {
-        if (player.getHeldItemMainhand().getItem().equals(Impatience.SCAFFOLD.asItem())) {
+        if (player.getHeldItemMainhand().getItem() == Impatience.SCAFFOLDING.asItem()) {
             BlockPos placePos = pos;
             for (int i = 0; i < 32; i++) {
                 placePos = placePos.offset(EnumFacing.UP);
@@ -192,9 +193,18 @@ public class BlockScaffold extends Block implements IBucketPickupHandler, ILiqui
                 if (world.getBlockState(placePos).isAir()) {
                     world.setBlockState(placePos, this.getDefaultState());
                     if (!player.isCreative()) player.getHeldItemMainhand().shrink(1);
+//                    if (!(player.isSneaking() && player.getHeldItemMainhand().getItem() == Impatience.SCAFFOLDING.asItem())) <- place a lot at a time
                     break;
-                } else if (world.getBlockState(placePos).getBlock() != Impatience.SCAFFOLD) break;
+                } else if (world.getBlockState(placePos).getBlock() != Impatience.SCAFFOLDING) break;
             }
         }
+    }
+
+
+
+
+
+    private boolean isHovering(IBlockState state) {
+        return !(state.isTopSolid() || state.getBlock() == Impatience.SCAFFOLDING);
     }
 }
