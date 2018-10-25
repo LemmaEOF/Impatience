@@ -14,5 +14,19 @@
   "block.impatience.smooth_red_sandstone_stairs": "Smooth red sandstone stairs",
   "block.impatience.smooth_stone_stairs": "Smooth stone stairs",
   "block.impatience.smooth_quartz_stairs": "Smooth quartz stairs",
-  "block.impatience.stone_stairs": "Stone stairs"
+  "block.impatience.stone_stairs": "Stone stairs",
+  "block.impatience.andesite_slab": "Andesite slab",
+  "block.impatience.diorite_slab": "Diorite slab",
+  "block.impatience.granite_slab": "Granite slab",
+  "block.impatience.end_stone_brick_slab": "End stone brick slab",
+  "block.impatience.mossy_cobblestone_slab": "Mossy cobblestone slab",
+  "block.impatience.mossy_stone_brick_slab": "Mossy stone brick slab",
+  "block.impatience.polished_andesite_slab": "Polished andesite slab",
+  "block.impatience.polished_diorite_slab": "Polished diorite slab",
+  "block.impatience.polished_granite_slab": "Polished granite slab",
+  "block.impatience.red_nether_brick_slab": "Red nether brick slab",
+  "block.impatience.smooth_sandstone_slab": "Smooth sandstone slab",
+  "block.impatience.smooth_red_sandstone_slab": "Smooth red sandstone slab",
+  "block.impatience.smooth_stone_slab": "Smooth stone slab",
+  "block.impatience.smooth_quartz_slab": "Smooth quartz slab"
 }

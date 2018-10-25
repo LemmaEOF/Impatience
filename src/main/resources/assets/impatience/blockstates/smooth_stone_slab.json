@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "impatience:block/smooth_stone_slab" },
+    "type=top": { "model": "impatience:block/smooth_stone_slab_top" },
+    "type=double": { "model": "impatience:block/smooth_stone_slab_double" }
+  }
+}

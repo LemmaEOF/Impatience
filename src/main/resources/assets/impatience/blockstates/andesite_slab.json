@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "impatience:block/andesite_slab" },
+    "type=top": { "model": "impatience:block/andesite_slab_top" },
+    "type=double": { "model": "block/andesite" }
+  }
+}
