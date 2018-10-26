@@ -2,6 +2,7 @@ package space.bbkr.impatience;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.BlockWall;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -42,8 +43,23 @@ public class Impatience implements BlockAdder, ItemAdder {
     public static final BlockSlab RED_NETHER_BRICK_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.NETHERRACK).hardnessAndResistance(2.0F, 6.0F));
     public static final BlockSlab SMOOTH_SANDSTONE_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.SAND).hardnessAndResistance(2.0F, 6.0F));
     public static final BlockSlab SMOOTH_RED_SANDSTONE_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.ADOBE).hardnessAndResistance(2.0F, 6.0F));
-    public static final BlockSlab SMOOTH_STONE_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.ADOBE).hardnessAndResistance(2.0F, 6.0F));
-    public static final BlockSlab SMOOTH_QUARTZ_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.ADOBE).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockSlab SMOOTH_STONE_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.STONE).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockSlab SMOOTH_QUARTZ_SLAB = new BlockSlab(Block.Builder.create(Material.ROCK, MapColor.QUARTZ).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall ANDESITE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.STONE).hardnessAndResistance(1.5F, 6.0F));
+    public static final BlockWall DIORITE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.QUARTZ).hardnessAndResistance(1.5F, 6.0F));
+    public static final BlockWall GRANITE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.DIRT).hardnessAndResistance(1.5F, 6.0F));
+    public static final BlockWall BRICK_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.RED).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall END_STONE_BRICK_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.SAND).hardnessAndResistance(0.8F, 0.8F));
+    public static final BlockWall MOSSY_STONE_BRICK_WALL = new BlockWall(Block.Builder.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F));
+    public static final BlockWall NETHER_BRICK_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.NETHERRACK).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall PRISMARINE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.CYAN).hardnessAndResistance(1.5F, 6.0F));
+    public static final BlockWall RED_NETHER_BRICK_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.NETHERRACK).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall SANDSTONE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.SAND).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall RED_SANDSTONE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.ADOBE).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall SMOOTH_STONE_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.STONE).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall SMOOTH_QUARTZ_WALL = new BlockWall(Block.Builder.create(Material.ROCK, MapColor.QUARTZ).hardnessAndResistance(2.0F, 6.0F));
+    public static final BlockWall STONE_BRICK_WALL = new BlockWall(Block.Builder.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F));
+    public static final BlockWall STONE_WALL = new BlockWall(Block.Builder.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F));
 
     @Override
     public void registerBlocks() {
@@ -77,22 +93,20 @@ public class Impatience implements BlockAdder, ItemAdder {
         Block.register(new ResourceLocation("impatience:smooth_red_sandstone_slab"), SMOOTH_RED_SANDSTONE_SLAB);
         Block.register(new ResourceLocation("impatience:smooth_stone_slab"), SMOOTH_STONE_SLAB);
         Block.register(new ResourceLocation("impatience:smooth_quartz_slab"), SMOOTH_QUARTZ_SLAB);
-        // register granite walls
-        // register andesite walls
-        // register diorite walls
-        // register mossy stone brick walls
-        // register end stone brick walls
-        // register smooth stone walls
-        // register stone walls
-        // register smooth quartz walls
-        // register red nether brick walls
-        // register brick walls
-        // register prismarine walls
-        // register sandstone walls
-        // register red sandstone walls
-        // register nether brick walls
-        // register stone brick walls
-
+        Block.register(new ResourceLocation("impatience:andesite_wall"), ANDESITE_WALL);
+        Block.register(new ResourceLocation("impatience:diorite_wall"), DIORITE_WALL);
+        Block.register(new ResourceLocation("impatience:granite_wall"), GRANITE_WALL);
+        Block.register(new ResourceLocation("impatience:brick_wall"), BRICK_WALL);
+        Block.register(new ResourceLocation("impatience:end_stone_brick_wall"), END_STONE_BRICK_WALL);
+        Block.register(new ResourceLocation("impatience:mossy_stone_brick_wall"), MOSSY_STONE_BRICK_WALL);
+        Block.register(new ResourceLocation("impatience:nether_brick_wall"), NETHER_BRICK_WALL);
+        Block.register(new ResourceLocation("impatience:prismarine_wall"), PRISMARINE_WALL);
+        Block.register(new ResourceLocation("impatience:red_nether_brick_wall"), RED_NETHER_BRICK_WALL);
+        Block.register(new ResourceLocation("impatience:sandstone_wall"), SANDSTONE_WALL);
+        Block.register(new ResourceLocation("impatience:red_sandstone_wall"), RED_SANDSTONE_WALL);
+        Block.register(new ResourceLocation("impatience:smooth_stone_wall"), SMOOTH_STONE_WALL);
+        Block.register(new ResourceLocation("impatience:smooth_quartz_wall"), SMOOTH_QUARTZ_WALL);
+        Block.register(new ResourceLocation("impatience:stone_wall"), STONE_WALL);
     }
 
     @Override
@@ -127,5 +141,19 @@ public class Impatience implements BlockAdder, ItemAdder {
         Item.register(SMOOTH_RED_SANDSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
         Item.register(SMOOTH_STONE_SLAB, ItemGroup.BUILDING_BLOCKS);
         Item.register(SMOOTH_QUARTZ_SLAB, ItemGroup.BUILDING_BLOCKS);
+        Item.register(ANDESITE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(DIORITE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(GRANITE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(BRICK_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(END_STONE_BRICK_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(MOSSY_STONE_BRICK_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(NETHER_BRICK_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(PRISMARINE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(RED_NETHER_BRICK_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(SANDSTONE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(RED_SANDSTONE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(SMOOTH_STONE_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(SMOOTH_QUARTZ_WALL, ItemGroup.BUILDING_BLOCKS);
+        Item.register(STONE_WALL, ItemGroup.BUILDING_BLOCKS);
     }
 }

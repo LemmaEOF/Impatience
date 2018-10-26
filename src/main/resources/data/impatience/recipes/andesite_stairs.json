@@ -1,0 +1,17 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:andesite"
+        }
+    },
+    "result": {
+        "item": "impatience:andesite_stairs",
+        "count": 4
+    }
+}
